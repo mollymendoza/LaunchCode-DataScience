@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def normalEqn(X,y):
     """ Computes the closed-form solution to linear regression
        normalEqn(X,y) computes the closed-form solution to linear
@@ -10,8 +9,14 @@ def normalEqn(X,y):
 # ====================== YOUR CODE HERE ======================
 # Instructions: Complete the code to compute the closed form solution
 #               to linear regression and put the result in theta.
-#
+  
 
+    
+    XtransposeX = X.T.dot(X) 
+    inverseofXtransposeX = np.linalg.inv(XtransposeX)
+    inverseofXtransposeXtimestransposeX = inverseofXtransposeX.dot(X.T)
+    
+    theta = inverseofXtransposeXtimestransposeX.dot(y)
 # ---------------------- Sample Solution ----------------------
 
 
@@ -19,5 +24,6 @@ def normalEqn(X,y):
 
     return theta
 
-# ============================================================
 
+
+# ============================================================

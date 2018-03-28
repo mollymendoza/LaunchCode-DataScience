@@ -1,4 +1,5 @@
 from computeCost import computeCost
+import numpy as np
 
 
 def gradientDescent(X, y, theta, alpha, num_iters):
@@ -9,7 +10,7 @@ def gradientDescent(X, y, theta, alpha, num_iters):
     """
 
     # Initialize some useful values
-    J_history = []
+    J_history = [0] * num_iters
     m = y.size  # number of training examples
 
     for i in range(num_iters):
@@ -19,12 +20,19 @@ def gradientDescent(X, y, theta, alpha, num_iters):
         #
         # Hint: While debugging, it can be useful to print out the values
         #       of the cost function (computeCost) and gradient here.
-        #
+        
+        m = y.size
+  
+        
+        theta = theta - alpha*(1/m)*np.sum(X.dot(theta)-y)
+
+        
 
 
         # ============================================================
 
         # Save the cost J in every iteration
-        J_history.append(computeCost(X, y, theta))
+        
+      
 
     return theta, J_history

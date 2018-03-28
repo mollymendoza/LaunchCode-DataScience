@@ -1,7 +1,9 @@
 from matplotlib import use, cm
 use('TkAgg')
 import matplotlib.pyplot as plt
+
 import numpy as np
+
 from mpl_toolkits.mplot3d import axes3d
 from sklearn import linear_model
 
@@ -9,7 +11,7 @@ from gradientDescent import gradientDescent
 from computeCost import computeCost
 from warmUpExercise import warmUpExercise
 from plotData import plotData
-from show import show
+#from show import show
 
 ## Machine Learning Online Class - Exercise 1: Linear Regression
 
@@ -29,6 +31,7 @@ from show import show
 #     featureNormalize.py
 #     normalEqn.py
 #
+
 #  For this exercise, you will not need to change any code in this file,
 #  or any other files other than those mentioned above.
 #
@@ -43,17 +46,19 @@ warmup = warmUpExercise()
 print(warmup)
 input("Program paused. Press Enter to continue...")
 
+
 # ======================= Part 2: Plotting =======================
 data = np.loadtxt('ex1data1.txt', delimiter=',')
 m = data.shape[0]
 X = np.vstack(zip(np.ones(m),data[:,0]))
 y = data[:, 1]
 
+
 # Plot Data
 # Note: You have to complete the code in plotData.py
 print('Plotting Data ...')
 plotData(data)
-show()
+plt.show()
 
 input("Program paused. Press Enter to continue...")
 
@@ -81,7 +86,7 @@ plt.figure()
 plotData(data)
 plt.plot(X[:, 1], X.dot(theta), '-', label='Linear regression')
 plt.legend(loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
-show()
+plt.show()
 
 input("Program paused. Press Enter to continue...")
 
@@ -109,7 +114,8 @@ for i in range(theta0_vals.size):
     J_vals=np.column_stack((J_vals,col))
 
 # Because of the way meshgrids work in the surf command, we need to
-# transpose J_vals before calling surf, or else the axes will be flipped
+# transpose J_vals before calling
+#surf, or else the axes will be flipped
 J_vals = J_vals[:,1:].T
 theta0_vals, theta1_vals = np.meshgrid(theta0_vals, theta1_vals)
 
@@ -121,7 +127,7 @@ ax.plot_surface(theta0_vals, theta1_vals, J_vals, rstride=8, cstride=8, alpha=0.
 ax.set_xlabel(r'$\theta_0$')
 ax.set_ylabel(r'$\theta_1$')
 ax.set_zlabel(r'J($\theta$)')
-show()
+plt.show()
 
 input("Program paused. Press Enter to continue...")
 
@@ -134,7 +140,7 @@ plt.clabel(ax, inline=1, fontsize=10)
 plt.xlabel(r'$\theta_0$')
 plt.ylabel(r'$\theta_1$')
 plt.plot(0.0, 0.0, 'rx', linewidth=2, markersize=10)
-show()
+plt.show()
 
 input("Program paused. Press Enter to continue...")
 
@@ -154,8 +160,9 @@ plt.figure()
 plotData(data)
 plt.plot(X[:, 1],  X.dot(regr.coef_), '-', color='black', label='Linear regression wit scikit')
 plt.legend(loc='upper right', shadow=True, fontsize='x-large', numpoints=1)
-show()
+plt.show()
 
 input("Program paused. Press Enter to continue...")
+
 
 

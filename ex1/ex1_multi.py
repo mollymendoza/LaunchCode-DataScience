@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from gradientDescentMulti import gradientDescentMulti
 from normalEqn import normalEqn
 from featureNormalize import featureNormalize
-from show import show
+#from show import show
 # ================ Part 1: Feature Normalization ================
 
 print('Loading data ...')
@@ -66,13 +66,13 @@ num_iters = 400
 
 # Init Theta and Run Gradient Descent 
 theta = np.zeros(3)
-theta, J_history = gradientDescentMulti(X, y, theta, alpha, num_iters)
+theta, C_history = gradientDescentMulti(X, y, theta, alpha, num_iters)
 
 # Plot the convergence graph
-plt.plot(J_history, '-b')
+plt.plot(C_history, '-b')
 plt.xlabel('Number of iterations')
 plt.ylabel('Cost J')
-show()
+plt.show()
 input("Program paused. Press Enter to continue...")
 
 # Display gradient descent's result
@@ -80,7 +80,9 @@ print('Theta computed from gradient descent: ')
 print(theta)
 
 # Estimate the price of a 1650 sq-ft, 3 br house
-price = np.array([1,3,1650]).dot(theta)
+s = (1650-mu[0])/sigma[0]
+r = (3-mu[1])/sigma[1]
+price = np.array([1, s, r]).dot(theta)
 
 print('Predicted price of a 1650 sq-ft, 3 br house')
 print('(using gradient descent): ')
@@ -119,7 +121,7 @@ print('Theta computed from the normal equations:')
 print(' %s \n' % theta)
 
 # Estimate the price of a 1650 sq-ft, 3 br house
-price = np.array([1, 3, 1650]).dot(theta)
+price = np.array([1, 1650, 3]).dot(theta)
 
 # ============================================================
 

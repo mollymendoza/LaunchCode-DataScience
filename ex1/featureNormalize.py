@@ -1,5 +1,8 @@
 import numpy as np
-
+data = np.loadtxt('ex1data2.txt', delimiter=',')
+X = data[:, :2]
+#y = data[:, 2]
+#m = y.T.size
 
 def featureNormalize(X):
     """
@@ -24,8 +27,15 @@ def featureNormalize(X):
     #
     # Hint: You might find the 'mean' and 'std' functions useful.
     #
-
+    
+    
+    features = X.shape[1]
+    mu = np.array([np.mean(X[:,i]) for i in range(features)])
+    sigma = np.array([np.std(X[:,i]) for i in range(features)])
+    X_norm = (X - mu) / sigma
+    
 
 # ============================================================
 
     return X_norm, mu, sigma
+
