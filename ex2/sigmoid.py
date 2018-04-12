@@ -1,3 +1,4 @@
+import numpy as np
 from numpy import e
 
 def sigmoid(z):
@@ -6,7 +7,9 @@ def sigmoid(z):
 # ====================== YOUR CODE HERE ======================
 # Instructions: Compute the sigmoid of each value of z (z can be a matrix,
 #               vector or scalar).
+    
+    g = 1/(1 + (np.exp(-z)))
 
 # =============================================================
-    g = 0
+ #   g = 0
     return g
